@@ -7,11 +7,51 @@ public class Banco {
      private LinkedList<Usuario> listaUsuarios;
      private LinkedList<Transaccion> listaTransacciones;
 
-    int loquita;
+
     public Banco() {
         this.nombre = nombre;
         this.listaUsuarios = new LinkedList<>();
         this.listaTransacciones = new LinkedList<>();
+    }
+
+    public void agregarUsuario(Usuario usuario) {
+        if (!usuarioExiste(usuario.getCedula())){
+            listaUsuarios.add(usuario);
+            System.out.println("Usuario agregado: " + usuario.getNombre());
+        }else{
+            throw new RuntimeException("Usuario ya existe");
+        }
+    }
+
+    public void eliminarUsuario(Usuario usuario) {
+        if (usuarioExiste(usuario.getCedula())){
+            listaUsuarios.remove(usuario);
+            System.out.println("Usuario eliminado: " + usuario.getNombre());
+        }else{
+            throw new RuntimeException("Usuario no existe");
+        }
+    }
+
+    public void actualizarUsuario(String cedula, String nuevoNombre) {
+        for (Usuario usuario : listaUsuarios) {
+            if (usuario.getCedula().equals(cedula)) {
+                usuario.setNombre(nuevoNombre);
+                System.out.println("Usuario actualizado: " + usuario);
+                return;
+            }
+        }
+        throw new RuntimeException("Usuario con cédula " + cedula + " no encontrado");
+    }
+
+    private boolean usuarioExiste(String cedula){
+        boolean existe=false;
+        for (Usuario usuario : listaUsuarios) {
+            if(usuario.getCedula().equals(cedula)){
+                existe=true;
+                break;
+            }
+        }
+        return existe;
     }
 
 

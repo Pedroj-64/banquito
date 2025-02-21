@@ -5,14 +5,14 @@ public class Usuario {
     private String nombre;
     private String direccion;
     private String cedula;
-    private String Correo;
+    private String correo;
     private String password;
 
-    public Usuario(String nombre, String direccion, String cedula, String Correo, String password) {
+    public Usuario(String nombre, String direccion, String cedula, String correo, String password) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.cedula = cedula;
-        this.Correo = Correo;
+        this.correo = correo;
         this.password = password;
     }
 
@@ -43,11 +43,11 @@ public class Usuario {
     }
 
     public String getCorreo() {
-        return Correo;
+        return correo;
     }
 
     public void setCorreo(String correo) {
-        Correo = correo;
+        correo = correo;
     }
 
     public String getPassword() {
@@ -64,7 +64,7 @@ public class Usuario {
                 "nombre='" + nombre + '\'' +
                 ", direccion='" + direccion + '\'' +
                 ", cedula='" + cedula + '\'' +
-                ", Correo='" + Correo + '\'' +
+                ", Correo='" + correo + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }
