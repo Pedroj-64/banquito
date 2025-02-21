@@ -12,8 +12,6 @@ public class Banco {
         this.nombre = nombre;
         this.listaUsuarios = new LinkedList<>();
         this.listaTransacciones = new LinkedList<>();
-
-
     }
 
 

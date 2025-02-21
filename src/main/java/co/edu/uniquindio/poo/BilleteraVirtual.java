@@ -4,7 +4,9 @@ import java.security.SecureRandom;
 
 public class BilleteraVirtual {
 
-    private  int numBilletera;
+    private  String numBilletera;
+    private double saldo;
+    private Usuario usuario;
 
 
 
