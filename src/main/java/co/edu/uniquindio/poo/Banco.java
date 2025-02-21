@@ -7,7 +7,7 @@ public class Banco {
      private LinkedList<Usuario> listaUsuarios;
      private LinkedList<Transaccion> listaTransacciones;
 
-
+    int loquita;
     public Banco() {
         this.nombre = nombre;
         this.listaUsuarios = new LinkedList<>();
