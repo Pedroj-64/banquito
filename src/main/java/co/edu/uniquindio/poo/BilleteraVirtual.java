@@ -7,10 +7,9 @@ public class BilleteraVirtual {
     private  String numBilletera;
     private double saldo;
     private Usuario usuario;
+    private boolean estado;
 
     public BilleteraVirtual(Usuario usuario) {
-        this.numBilletera = numBilletera;
-        this.saldo = saldo;
         this.usuario = usuario;
     }
 
