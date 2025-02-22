@@ -1,6 +1,5 @@
 package co.edu.uniquindio.poo;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Transaccion {
@@ -11,6 +10,16 @@ public class Transaccion {
     private BilleteraVirtual origen;
     private BilleteraVirtual destino;
     private Categoria categoria;
+
+    public Transaccion(double valor,BilleteraVirtual origen, BilleteraVirtual destino, Categoria categoria) {
+        this.valor = valor;
+        this.origen = origen;
+        this.destino = destino;
+        this.categoria = categoria;
+        fecha = LocalDateTime.now();
+
+
+    }
 
     public String getID() {
         return ID;
@@ -59,6 +68,7 @@ public class Transaccion {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
+
 
     @Override
     public String toString() {

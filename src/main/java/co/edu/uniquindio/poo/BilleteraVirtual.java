@@ -9,8 +9,14 @@ public class BilleteraVirtual {
     private Usuario usuario;
     private boolean estado;
 
+    //Se supon que esta clase tiene que implementar accionesBanca por que tambient transfiere dinero no olvidar eso
+    //IMPORTANTE
+
+
+
     public BilleteraVirtual(Usuario usuario) {
         this.usuario = usuario;
+        this.estado=true;
     }
 
     public void recargarBilletera(double saldoNuevo) {
@@ -50,6 +56,14 @@ public class BilleteraVirtual {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 
     @Override
