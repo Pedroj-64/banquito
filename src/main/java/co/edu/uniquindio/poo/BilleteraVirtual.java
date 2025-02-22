@@ -8,18 +8,26 @@ public class BilleteraVirtual {
     private double saldo;
     private Usuario usuario;
 
-    public BilleteraVirtual(String numBilletera, double saldo, Usuario usuario) {
+    public BilleteraVirtual(Usuario usuario) {
         this.numBilletera = numBilletera;
         this.saldo = saldo;
         this.usuario = usuario;
     }
 
     public void recargarBilletera(double saldoNuevo) {
-        if(saldoNuevo>0){
-            saldo+=saldoNuevo;
+        try {
+            if (saldoNuevo >= 0) {
+                saldo += saldoNuevo;
+                System.out.println("Saldo recargado exitosamente: " + saldoNuevo);
+            } else {
+                throw new IllegalArgumentException("Saldo agregado no válido: " + saldoNuevo);
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            throw e;
         }
-        throw new RuntimeException("Saldo agregado no valido");
     }
+
 
     public String getNumBilletera() {
         return numBilletera;

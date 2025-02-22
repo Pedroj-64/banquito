@@ -1,26 +1,38 @@
 package co.edu.uniquindio.poo;
 
 import java.util.LinkedList;
+import java.util.UUID;
 
 public class Banco {
      private String nombre;
      private LinkedList<Usuario> listaUsuarios;
      private LinkedList<Transaccion> listaTransacciones;
+     private LinkedList<BilleteraVirtual> listaBilleterasVirtuales;
 
 
     public Banco() {
         this.nombre = nombre;
         this.listaUsuarios = new LinkedList<>();
         this.listaTransacciones = new LinkedList<>();
+        this.listaBilleterasVirtuales = new LinkedList<>();
     }
 
-    public void agregarUsuario(Usuario usuario) {
-        if (!usuarioExiste(usuario.getCedula())){
-            listaUsuarios.add(usuario);
-            System.out.println("Usuario agregado: " + usuario.getNombre());
-        }else{
-            throw new RuntimeException("Usuario ya existe");
+    public void agregarUsuario(Usuario usuario) throws Exception{
+        try{
+            if (!usuarioExiste(usuario.getCedula())){
+                listaUsuarios.add(usuario);
+                BilleteraVirtual billeteraVirtualNueva = crearIdBilletera(usuario);
+                System.out.println("Usuario agregado: " + usuario.getNombre() + "Billetera virtual creada con el id: " + billeteraVirtualNueva.getNumBilletera() );
+            }else
+                System.out.println("El usario fue agregado con anterioridad");
         }
+        catch (NullPointerException es){
+            throw new NullPointerException("El usuario no puede ser nulo");
+        }
+        catch (Exception e) {
+            throw new RuntimeException("Error al crear al nuevo usuario" + e);
+        }
+
     }
 
     public void eliminarUsuario(Usuario usuario) {
@@ -52,6 +64,23 @@ public class Banco {
             }
         }
         return existe;
+    }
+
+    public void crearBilletera(Usuario usuario) throws Exception {
+        try {
+            BilleteraVirtual nuevaBilletera = new BilleteraVirtual(usuario);
+            nuevaBilletera.setNumBilletera(this.crearIdBilletera());
+        } catch (NullPointerException e) {
+            throw new RuntimeException("Usuario no puede ser nulo: " + e.getMessage(), e);
+        } catch (Exception e) {
+            throw new RuntimeException("Error al crear la billetera: " + e.getMessage(), e);
+        }
+    }
+
+
+    private String crearIdBilletera(){
+
+        return String.valueOf(UUID.randomUUID());
     }
 
 
