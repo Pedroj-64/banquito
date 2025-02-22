@@ -85,7 +85,24 @@ public class Banco {
         }
     }
 
-  
+    public Usuario buscarUsuarioPorCedula(String cedula) throws Exception {
+        try {
+            for (Usuario usuario : listaUsuarios) {
+                if (usuario.getCedula().equals(cedula)) {
+                    return usuario;
+                }
+            }
+            throw new IllegalArgumentException("Usuario con cédula " + cedula + " no encontrado");
+        } catch (NullPointerException e) {
+            throw new NullPointerException("La lista de usuarios o la cédula proporcionada son nulas");
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            throw e;
+        } catch (Exception e) {
+            throw new RuntimeException("Error al buscar el usuario: " + e.getMessage(), e);
+        }
+    }
+
 
     private String crearIdBilletera() {
         return UUID.randomUUID().toString();
