@@ -23,6 +23,10 @@ public class BilleteraVirtual {
         this.estado=true;
     }
 
+    /**
+     * Metodo que permite recargar la billetera
+     * @param saldoNuevo
+     */
     public void recargarBilletera(double saldoNuevo) {
         try {
             if (saldoNuevo >= 0) {
@@ -37,10 +41,22 @@ public class BilleteraVirtual {
         }
     }
 
+    /**
+     * Metodo para tranferir directamente desde la billetera a otra
+     * @param valor
+     * @param destino
+     * @param categoria
+     * @param banco
+     * @throws Exception
+     */
     public void transferirDesdeBilletera(double valor, BilleteraVirtual destino, Categoria categoria, Banco banco) throws Exception {
+        if(banco==null) {
+            throw new IllegalArgumentException("El banco no puede ser nulo");
+        }
         banco.realizarTransaccion(valor, this, destino, categoria);
     }
 
+    /// Getters y Setters
     public String getNumBilletera() {
         return numBilletera;
     }
@@ -73,5 +89,14 @@ public class BilleteraVirtual {
         this.estado = estado;
     }
 
-
+    @Override
+    public String toString() {
+        return "BilleteraVirtual{" +
+                "numBilletera='" + numBilletera + '\'' +
+                ", saldo=" + saldo +
+                ", usuario=" + usuario +
+                ", estado=" + estado +
+                ", transacciones=" + transacciones +
+                '}';
+    }
 }

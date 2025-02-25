@@ -11,7 +11,6 @@ public class Transaccion {
     private BilleteraVirtual destino;
     private Categoria categoria;
 
-    private static final double COMISION = 200;
 
     public Transaccion(double valor,BilleteraVirtual origen, BilleteraVirtual destino, Categoria categoria) {
         this.valor = valor;

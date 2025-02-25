@@ -115,6 +115,11 @@ public class Banco implements AccionesBanca {
         if (origen == null || destino == null) {
             throw new NullPointerException("Las billeteras origen y destino no pueden ser nulas");
         }
+
+        if (!origen.isEstado() || !destino.isEstado()) {
+            throw new Exception("Una de las billeteras está desactivada");
+        }
+
         double valorTotalTransaccion = valor + costoPorTransaccion;
 
         if (origen.getSaldo() < valorTotalTransaccion) {
@@ -133,9 +138,7 @@ public class Banco implements AccionesBanca {
         listaTransacciones.add(transaccion);
     }
 
-    public void transaccionDesdeBilletera(BilleteraVirtual billetera) throws Exception {
 
-    }
 
     /**
      * Crea una nueva billetera virtual para un usuario.
@@ -162,7 +165,12 @@ public class Banco implements AccionesBanca {
     public Usuario buscarUsuarioPorCedula(String cedula) throws Exception {
         for (Usuario usuario : listaUsuarios) {
             if (usuario.getCedula().equals(cedula)) {
-                return usuario;
+                for (BilleteraVirtual billetera : listaBilleterasVirtuales) {
+                    if (billetera.getUsuario().equals(usuario) && billetera.isEstado()) {
+                        return usuario;
+                    }
+                    throw new IllegalArgumentException("Usuario con cédula " + cedula + " no encontrado");
+                }
             }
         }
         throw new IllegalArgumentException("Usuario con cédula " + cedula + " no encontrado");
