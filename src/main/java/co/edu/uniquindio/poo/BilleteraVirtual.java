@@ -1,6 +1,9 @@
 package co.edu.uniquindio.poo;
 
 import java.security.SecureRandom;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.UUID;
 
 public class BilleteraVirtual {
 
@@ -8,6 +11,7 @@ public class BilleteraVirtual {
     private double saldo;
     private Usuario usuario;
     private boolean estado;
+    private LinkedList<Transaccion>transacciones;
 
     //Se supon que esta clase tiene que implementar accionesBanca por que tambient transfiere dinero no olvidar eso
     //IMPORTANTE
@@ -33,6 +37,9 @@ public class BilleteraVirtual {
         }
     }
 
+    public void transferirDesdeBilletera(double valor, BilleteraVirtual destino, Categoria categoria, Banco banco) throws Exception {
+        banco.realizarTransaccion(valor, this, destino, categoria);
+    }
 
     public String getNumBilletera() {
         return numBilletera;
@@ -66,12 +73,5 @@ public class BilleteraVirtual {
         this.estado = estado;
     }
 
-    @Override
-    public String toString() {
-        return "BilleteraVirtual{" +
-                "usuario=" + usuario +
-                ", saldo=" + saldo +
-                ", numBilletera='" + numBilletera + '\'' +
-                '}';
-    }
+
 }

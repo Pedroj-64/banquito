@@ -133,6 +133,10 @@ public class Banco implements AccionesBanca {
         listaTransacciones.add(transaccion);
     }
 
+    public void transaccionDesdeBilletera(BilleteraVirtual billetera) throws Exception {
+
+    }
+
     /**
      * Crea una nueva billetera virtual para un usuario.
      * @param usuario Usuario para el que se creará la billetera.
@@ -234,6 +238,8 @@ public class Banco implements AccionesBanca {
     public void setListaBilleterasVirtuales(LinkedList<BilleteraVirtual> listaBilleterasVirtuales) {
         this.listaBilleterasVirtuales = listaBilleterasVirtuales;
     }
+
+
 
     @Override
     public String toString() {
