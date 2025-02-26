@@ -17,14 +17,10 @@ class BancoTest {
     @BeforeEach
     void setUp() {
         banco = new Banco("Banco Test");
-        usuario = new Usuario("Rodolfo", "Avenida 69", "321", "correito", "contraseñita");
+        usuario = new Usuario("Rodolfo", "Avenida 69", "123", "correito", "contraseñita");
     }
 
-    @BeforeEach
-    void setUp2() {
-        banco = new Banco("Banco Test");
-        usuario = new Usuario("Rodolfo", "Avenida 69", "321", "correito", "contraseñita");
-    }
+
 
     @Test
     void testAgregarUsuario() throws Exception {
@@ -46,10 +42,13 @@ class BancoTest {
     }
 
     @Test
-    void testActualizarUsuario() throws Exception {
+    void testActualizarUsuarioExistente() throws Exception {
+        Usuario usuario = new Usuario("Pacho", "Calle 456", "123", "pacho@email.com", "pass");
         banco.agregarUsuario(usuario);
-        banco.actualizarUsuario("321", "Pedro Jose");
-        assertEquals("Rodolfo", banco.buscarUsuarioPorCedula("321").getNombre());
+
+        banco.actualizarUsuario("123", "Francisco");
+
+        assertEquals("Francisco", usuario.getNombre(), "El nombre del usuario no se actualizó correctamente");
     }
 
     @Test

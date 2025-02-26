@@ -91,9 +91,11 @@ public class Banco implements AccionesBanca {
                 usuario.setNombre(nuevoNombre);
                 System.out.println("Usuario actualizado: " + usuario);
                 break;
+            }else{
+                throw new RuntimeException("Usuario con cédula " + cedula + " no encontrado");
             }
         }
-        throw new RuntimeException("Usuario con cédula " + cedula + " no encontrado");
+
     }
 
     /**
