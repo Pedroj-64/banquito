@@ -72,7 +72,7 @@ class BancoTest {
     @Test
     void buscarUsuarioPorCedula() throws Exception {
         banco.agregarUsuario(usuario); // Se agrega el usuario al banco
-        Usuario encontrado = banco.buscarUsuarioPorCedula("111");
+        Usuario encontrado = banco.buscarUsuarioPorCedula("321");
 
         assertNotNull(encontrado, "El usuario no debería ser nulo");
         assertEquals(usuario, encontrado, "El usuario encontrado debería ser el mismo que el agregado");
