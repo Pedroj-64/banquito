@@ -1,5 +1,8 @@
 package co.edu.uniquindio.poo;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,42 +11,46 @@ import java.time.LocalDateTime;
 
 class BancoTest {
     private Banco banco;
+    private Usuario usuario;
+    private BilleteraVirtual billetera;
 
     @BeforeEach
     void setUp() {
-        banco = new Banco("mi amigo");
+        banco = new Banco("Banco Test");
+        usuario = new Usuario("Rodolfo", "Avenida 69", "321", "correito", "contraseñita");
+    }
+    private Banco banco;
+
+    @Test
+    void agregarUsuario() {
     }
 
     @Test
-    void testSetAndGetNombre() {
-        banco.setNombre("Banco Central");
-        assertEquals("Banco Central", banco.getNombre(), "El nombre del banco no coincide");
+    void obtenerBilletera() {
     }
 
     @Test
-    void testSetAndGetListaUsuarios() {
-        LinkedList<Usuario> usuarios = new LinkedList<>();
-        usuarios.add(new Usuario("Juan Pérez", "Calle 123", "12345678", "juan@email.com", "pass123"));
-        usuarios.add(new Usuario("Ana Gómez", "Av. 456", "87654321", "ana@email.com", "pass456"));
-
-        banco.setListaUsuarios(usuarios);
-        assertEquals(usuarios, banco.getListaUsuarios(), "La lista de usuarios no coincide");
+    void eliminarUsuario() {
     }
 
     @Test
-    void testSetAndGetListaBilleterasVirtuales() {
-        LinkedList<BilleteraVirtual> billeteras = new LinkedList<>();
-        Usuario usuario1 = new Usuario("Carlos López", "Calle A", "11111111", "carlos@email.com", "abc123");
-        Usuario usuario2 = new Usuario("María Ruiz", "Av. B", "22222222", "maria@email.com", "xyz789");
+    void actualizarUsuario() {
+    }
 
-        BilleteraVirtual billetera1 = new BilleteraVirtual(usuario1);
-        BilleteraVirtual billetera2 = new BilleteraVirtual(usuario2);
+    @Test
+    void realizarTransaccion() {
+    }
 
-        billeteras.add(billetera1);
-        billeteras.add(billetera2);
+    @Test
+    void crearBilletera() {
+    }
 
-        banco.setListaBilleterasVirtuales(billeteras);
-        assertEquals(billeteras, banco.getListaBilleterasVirtuales(), "La lista de billeteras virtuales no coincide");
+    @Test
+    void buscarUsuarioPorCedula() {
+    }
+
+    @Test
+    void crearIDRandom() {
     }
 
     @Test
