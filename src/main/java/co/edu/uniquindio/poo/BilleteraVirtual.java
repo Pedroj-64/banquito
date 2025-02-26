@@ -13,10 +13,6 @@ public class BilleteraVirtual {
     private boolean estado;
     private LinkedList<Transaccion>transacciones;
 
-    //Se supon que esta clase tiene que implementar accionesBanca por que tambient transfiere dinero no olvidar eso
-    //IMPORTANTE
-
-
 
     public BilleteraVirtual(Usuario usuario) {
         this.usuario = usuario;
